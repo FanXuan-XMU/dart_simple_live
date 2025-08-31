@@ -273,6 +273,22 @@ class LiveRoomPage extends GetView<LiveRoomController> {
         ),
         Obx(
           () => Visibility(
+            visible: AppSettingsController.instance.fanxuanWatermark.value,
+            child: const Positioned(
+              top: 10,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: Text(
+                  "本直播由范宣大王专属",
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ),
+            ),
+          ),
+        ),
+        Obx(
+          () => Visibility(
             visible: !controller.liveStatus.value,
             child: const Center(
               child: Text(

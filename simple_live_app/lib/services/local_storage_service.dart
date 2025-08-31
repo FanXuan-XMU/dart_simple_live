@@ -162,6 +162,9 @@ class LocalStorageService extends GetxService {
   /// WebDAV_最后一次备份时间
   static const String kWebDAVLastRecoverTime = "kWebDAVLastRecoverTime";
 
+  /// 范宣大王专属水印
+  static const String kFanxuanWatermark = "FanxuanWatermark";
+
   late Box settingsBox;
   late Box<String> shieldBox;
 

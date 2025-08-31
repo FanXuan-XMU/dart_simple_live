@@ -521,4 +521,11 @@ class AppSettingsController extends GetxController {
     LocalStorageService.instance
         .setValue(LocalStorageService.kPlayerForceHttps, e);
   }
+
+  var fanxuanWatermark = false.obs;
+  void setFanxuanWatermark(bool e) {
+    fanxuanWatermark.value = e;
+    LocalStorageService.instance
+        .setValue(LocalStorageService.kFanxuanWatermark, e);
+  }
 }

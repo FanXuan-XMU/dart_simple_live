@@ -237,6 +237,29 @@ class PlaySettingsPage extends GetView<AppSettingsController> {
               ],
             ),
           ),
+          Padding(
+            padding: AppStyle.edgeInsetsA12.copyWith(top: 24),
+            child: Text(
+              "其他",
+              style: Get.textTheme.titleSmall,
+            ),
+          ),
+          SettingsCard(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Obx(
+                  () => SettingsSwitch(
+                    title: "范宣大王专属水印",
+                    value: controller.fanxuanWatermark.value,
+                    onChanged: (e) {
+                      controller.setFanxuanWatermark(e);
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
