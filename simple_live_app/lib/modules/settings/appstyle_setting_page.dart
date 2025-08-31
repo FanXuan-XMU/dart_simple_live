@@ -145,30 +145,6 @@ class AppstyleSettingPage extends GetView<AppSettingsController> {
               ),
             ),
           ),
-          AppStyle.vGap12,
-          Padding(
-            padding: AppStyle.edgeInsetsA12,
-            child: Text(
-              "其他",
-              style: Get.textTheme.titleSmall,
-            ),
-          ),
-          SettingsCard(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Obx(
-                  () => SettingsSwitch(
-                    title: "范宣大王专属水印",
-                    value: controller.fanxuanWatermark.value,
-                    onChanged: (e) {
-                      controller.setFanxuanWatermark(e);
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );

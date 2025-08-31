@@ -4,10 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:simple_live_app/app/app_style.dart';
+import 'package:simple_live_app/app/controller/app_settings_controller.dart';
 import 'package:simple_live_app/app/log.dart';
 import 'package:simple_live_app/app/utils.dart';
 import 'package:simple_live_app/routes/route_path.dart';
 import 'package:simple_live_app/services/signalr_service.dart';
+import 'package:simple_live_app/widgets/settings/settings_switch.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class MinePage extends StatelessWidget {
@@ -121,6 +123,23 @@ class MinePage extends StatelessWidget {
               onTap: () {
                 Get.toNamed(RoutePath.kTools);
               },
+            ),
+            Divider(
+              indent: 12,
+              endIndent: 12,
+              color: Colors.grey.withAlpha(25),
+            ),
+            ListTile(
+              leading: const Icon(Remix.flutter_fill),
+              title: const Text("范宣大王专属水印"),
+              trailing: Obx(
+                () => SettingsSwitch(
+                  value: AppSettingsController.instance.fanxuanWatermark.value,
+                  onChanged: (e) {
+                    AppSettingsController.instance.setFanxuanWatermark(e);
+                  },
+                ),
+              ),
             ),
             Divider(
               indent: 12,
