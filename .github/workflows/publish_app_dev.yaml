@@ -61,7 +61,10 @@ jobs:
       - name: Update version
         run: |
           cd simple_live_app
-          sed -i -E "s/version: .*/version: 1.9.2+${{ github.run_number }}/g" pubspec.yaml
+          sed -i.bak 's/version: .*/version: 1.9.2+${{ github.run_number }}/g' pubspec.yaml
+
+      - name: Verify version
+        run: cat simple_live_app/pubspec.yaml
 
       # 安装appdmg npm install -g appdmg
       - name: Install appdmg
@@ -190,7 +193,10 @@ jobs:
       - name: Update version
         run: |
           cd simple_live_app
-          sed -i -E "s/version: .*/version: 1.9.2+${{ github.run_number }}/g" pubspec.yaml
+          sed -i.bak 's/version: .*/version: 1.9.2+${{ github.run_number }}/g' pubspec.yaml
+
+      - name: Verify version
+        run: cat simple_live_app/pubspec.yaml
 
       # 设置flutter_distributor环境
       - name: Install flutter_distributor
@@ -240,6 +246,9 @@ jobs:
         run: |
           cd simple_live_app
           powershell -Command "(Get-Content pubspec.yaml) -replace 'version: .*?', 'version: 1.9.2+${{ github.run_number }}' | Set-Content pubspec.yaml"
+
+      - name: Verify version
+        run: type simple_live_app\pubspec.yaml
 
       # 设置flutter_distributor环境
       - name: Install flutter_distributor
