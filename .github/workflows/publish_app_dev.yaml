@@ -57,6 +57,11 @@ jobs:
         run: |
           cd simple_live_app
           flutter pub get
+      
+      - name: Update version
+        run: |
+          cd simple_live_app
+          sed -i -E "s/version: .*/version: 1.9.2+${{ github.run_number }}/g" pubspec.yaml
 
       # 安装appdmg npm install -g appdmg
       - name: Install appdmg
@@ -181,6 +186,12 @@ jobs:
         run: |
           cd simple_live_app
           flutter pub get
+
+      - name: Update version
+        run: |
+          cd simple_live_app
+          sed -i -E "s/version: .*/version: 1.9.2+${{ github.run_number }}/g" pubspec.yaml
+
       # 设置flutter_distributor环境
       - name: Install flutter_distributor
         run: dart pub global activate flutter_distributor
@@ -219,10 +230,17 @@ jobs:
           cache: true
       - name: Enable Flutter Desktop
         run: flutter config --enable-windows-desktop
+      # 更新Flutter的packages
       - name: Restore Packages
         run: |
           cd simple_live_app
           flutter pub get
+
+      - name: Update version
+        run: |
+          cd simple_live_app
+          powershell -Command "(Get-Content pubspec.yaml) -replace 'version: .*?', 'version: 1.9.2+${{ github.run_number }}' | Set-Content pubspec.yaml"
+
       # 设置flutter_distributor环境
       - name: Install flutter_distributor
         run: dart pub global activate flutter_distributor
